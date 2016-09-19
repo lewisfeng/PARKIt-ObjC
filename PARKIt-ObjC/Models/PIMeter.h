@@ -9,11 +9,12 @@
 
 @import GoogleMaps;
 
-typedef enum : NSUInteger {
-    Disability = 0,
-    Motorbike  = 1
-    
-} MeterTypes;
+typedef enum : NSInteger {
+    Disability = 100,
+    Motorbike  = 101,
+    Single     = 102,
+    Twin       = 103
+} HeadTypes;
 
 @interface PIMeter : GMSMarker
 
@@ -23,6 +24,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *rate;
 @property (nonatomic, copy) NSString *timeEffect;
 @property (nonatomic, copy) NSString *address;
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, copy) NSString *rateLevel;
+@property (nonatomic, assign) NSInteger headType;
 
 @end

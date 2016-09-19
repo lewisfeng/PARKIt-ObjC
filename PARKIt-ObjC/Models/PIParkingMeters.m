@@ -13,9 +13,6 @@
 #define kPriceFilterMedium @"$2-$3.75"
 #define kPriceFilterHigh   @"$4-up"
 
-#define kTypeDisability @"Disability"
-#define kTypeMotorbike  @"Motorbike"
-
 NSString * const icon1 = @"GreenBigPark50x50.png";
 NSString * const icon2 = @"AmberPark50x50.png";
 NSString * const icon3 = @"RedPark50x50.png";
@@ -37,36 +34,33 @@ NSString * const icon5 = @"NoParking.png";
         meter.timeLimit  = [meterDict objectForKey:@"Time Limit"];
         meter.timeEffect = [meterDict objectForKey:@"Time in Effect"];
         meter.rate       = [meterDict objectForKey:@"Rate"];
-        
 
         NSString *meterType = [meterDict objectForKey:@"Meter Head Type:"];
-        if ([meterType containsString:kTypeDisability]) {
-            meter.type = Disability;
-        } else if ([meterType containsString:kTypeMotorbike]) {
-            meter.type = Motorbike;
-        } else if ([meterType containsString:@"Single"]) {
-            
-        }  else if ([meterType containsString:@"Twin"]) {
-            
-        } else {
-            NSLog(@"meter type = %@", meterType);
+        if ([meterType containsString:@"Disability"]) {
+            meter.headType = Disability;
+        } else if ([meterType containsString:@"Motorbike"]) {
+            meter.headType = Motorbike;
+        } else if ([meterType isEqualToString:@"Single"]) {
+            meter.headType = Single;
+        }  else if ([meterType isEqualToString:@"Twin"]) {
+            meter.headType = Twin;
         }
         
         NSString *meterAddress = [meterDict objectForKey:@"Address"];
         NSArray *array = [meterAddress componentsSeparatedByString:@","];
         meter.address = [[array[0] stringByAppendingString:@","] stringByAppendingString:array[1]];
 
-//        NSInteger dollarPerHr = [[meter.rate substringWithRange:[meter.rate rangeOfComposedCharacterSequenceAtIndex:1]] integerValue];
-//        if (dollarPerHr > 4) {
-//            meter.icon = [UIImage imageNamed:icon3];
-//            meter.rateLevel = kPriceFilterHigh;
-//        } else if (dollarPerHr >= 2) {
-//            meter.icon = [UIImage imageNamed:icon2];
-//            meter.rateLevel = kPriceFilterMedium;
-//        } else if (dollarPerHr > 0) {
-//            meter.icon = [UIImage imageNamed:icon1];
-//            meter.rateLevel = kPriceFilterLow;
-//        }
+        NSInteger dollarPerHr = [[meter.rate substringWithRange:[meter.rate rangeOfComposedCharacterSequenceAtIndex:1]] integerValue];
+        if (dollarPerHr > 4) {
+            meter.icon = [UIImage imageNamed:icon3];
+            meter.rateLevel = kPriceFilterHigh;
+        } else if (dollarPerHr >= 2) {
+            meter.icon = [UIImage imageNamed:icon2];
+            meter.rateLevel = kPriceFilterMedium;
+        } else if (dollarPerHr > 0) {
+            meter.icon = [UIImage imageNamed:icon1];
+            meter.rateLevel = kPriceFilterLow;
+        }
         [parkingMeters addObject:meter];
     }
     return parkingMeters;

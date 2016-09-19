@@ -10,4 +10,5 @@
 
 @interface PILocationManager : NSObject 
 + (instancetype)sharedLocationManager;
++ (void)requestWhenInUseAuthorizationCompletion:(void (^)(NSString *title, NSString *message))completion;
 @end

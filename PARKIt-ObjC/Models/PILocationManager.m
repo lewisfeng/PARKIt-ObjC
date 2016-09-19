@@ -31,41 +31,19 @@
                 // iOS version 8.0+
                 [sharedLocationManager.locationManager requestWhenInUseAuthorization];
             }
-
         }
     });
-    
     return sharedLocationManager;
 }
 
-//- (void)changeCameraToUserPosition {
-//    if (!CLLocationCoordinate2DIsValid(self.mapView.myLocation.coordinate)) {
-//        _getUserLocationFailedCount += 1;
-//        if (_getUserLocationFailedCount == kGetUserLocationFailedMaxCount) {
-//            [_getUserLocationTimer invalidate];
-//            self.mapView.alpha = 1.0f;
-//            self.mapView.userInteractionEnabled = YES;
-//        }
-//        return;
-//    }
-//    
-//    [_getUserLocationTimer invalidate];
-//    
-//    double lat = self.mapView.myLocation.coordinate.latitude;
-//    double lng = self.mapView.myLocation.coordinate.longitude;
-//    
-//    //    NSLog(@"lat - %f  :  lng - %f", lat, lng);
-//    
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat longitude:lng zoom:13.9f];
-//    [CATransaction begin];
-//    [CATransaction setValue:[NSNumber numberWithFloat:1.0f] forKey:kCATransactionAnimationDuration];
-//    [self.mapView animateToCameraPosition:camera];
-//    [CATransaction commit];
-//    [UIView animateWithDuration:kAnimDurQuick animations:^{
-//        self.mapView.alpha = 1.0f;
-//    } completion:^(BOOL finished) {
-//        self.mapView.userInteractionEnabled = YES;
-//    }];
-//}
++ (void)requestWhenInUseAuthorizationCompletion:(void (^)(NSString *, NSString *))completion {
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    // The user denied requestWhenInUseAuthorization
+    if (status == kCLAuthorizationStatusDenied) {
+        NSString *title = @"Location services are off";
+        NSString *message = @"To use Location services you must turn on 'While Using the App' in the Location Services Settings";
+        completion (title, message);
+    }
+}
 
 @end

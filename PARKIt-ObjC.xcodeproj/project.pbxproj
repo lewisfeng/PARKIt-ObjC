@@ -14,6 +14,9 @@
 		AC746BD51D8DCF74000B9F68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC746BD31D8DCF74000B9F68 /* LaunchScreen.storyboard */; };
 		AC746BE01D8DCF74000B9F68 /* PARKIt_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC746BDF1D8DCF74000B9F68 /* PARKIt_ObjCTests.m */; };
 		AC746BEB1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC746BEA1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m */; };
+		AC9D411E1D9066FD00904F36 /* PIMeterCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9D411D1D9066FD00904F36 /* PIMeterCluster.m */; };
+		AC9D41211D90682D00904F36 /* PIMeterClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41201D90682D00904F36 /* PIMeterClusterController.m */; };
+		AC9D41241D906D2700904F36 /* PIClusteredMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41231D906D2700904F36 /* PIClusteredMeter.m */; };
 		AC9E2E811D8F9C2D00E9FF6E /* PIMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */; };
 		AC9E2E871D8F9CEF00E9FF6E /* PIParkingMeters.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */; };
 		AC9E2E891D8FA5B600E9FF6E /* VancouverParkingMeters.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */; };
@@ -62,6 +65,12 @@
 		AC746BE61D8DCF74000B9F68 /* PARKIt-ObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PARKIt-ObjCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC746BEA1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PARKIt_ObjCUITests.m; sourceTree = "<group>"; };
 		AC746BEC1D8DCF74000B9F68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9D411C1D9066FD00904F36 /* PIMeterCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIMeterCluster.h; path = "PARKIt-ObjC/Models/PIMeterCluster.h"; sourceTree = "<group>"; };
+		AC9D411D1D9066FD00904F36 /* PIMeterCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIMeterCluster.m; path = "PARKIt-ObjC/Models/PIMeterCluster.m"; sourceTree = "<group>"; };
+		AC9D411F1D90682D00904F36 /* PIMeterClusterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIMeterClusterController.h; path = "PARKIt-ObjC/Controllers/PIMeterClusterController.h"; sourceTree = "<group>"; };
+		AC9D41201D90682D00904F36 /* PIMeterClusterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIMeterClusterController.m; path = "PARKIt-ObjC/Controllers/PIMeterClusterController.m"; sourceTree = "<group>"; };
+		AC9D41221D906D2700904F36 /* PIClusteredMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIClusteredMeter.h; path = "PARKIt-ObjC/Models/PIClusteredMeter.h"; sourceTree = "<group>"; };
+		AC9D41231D906D2700904F36 /* PIClusteredMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIClusteredMeter.m; path = "PARKIt-ObjC/Models/PIClusteredMeter.m"; sourceTree = "<group>"; };
 		AC9E2E7F1D8F9C2D00E9FF6E /* PIMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIMeter.h; path = "PARKIt-ObjC/Models/PIMeter.h"; sourceTree = "<group>"; };
 		AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIMeter.m; path = "PARKIt-ObjC/Models/PIMeter.m"; sourceTree = "<group>"; };
 		AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIParkingMeters.h; path = "PARKIt-ObjC/Models/PIParkingMeters.h"; sourceTree = "<group>"; };
@@ -197,6 +206,8 @@
 		ACBBD5EA1D8EF611009185BB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AC9D411F1D90682D00904F36 /* PIMeterClusterController.h */,
+				AC9D41201D90682D00904F36 /* PIMeterClusterController.m */,
 				ACBBD5ED1D8EF852009185BB /* PIRootViewControllerHandler.h */,
 				ACBBD5EE1D8EF852009185BB /* PIRootViewControllerHandler.m */,
 				ACBBD5F01D8EF9EB009185BB /* PIHomeViewViewController.h */,
@@ -227,6 +238,10 @@
 				AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */,
 				AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */,
 				AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */,
+				AC9D411C1D9066FD00904F36 /* PIMeterCluster.h */,
+				AC9D411D1D9066FD00904F36 /* PIMeterCluster.m */,
+				AC9D41221D906D2700904F36 /* PIClusteredMeter.h */,
+				AC9D41231D906D2700904F36 /* PIClusteredMeter.m */,
 			);
 			name = Models;
 			path = ..;
@@ -432,12 +447,15 @@
 			files = (
 				AC9E2E871D8F9CEF00E9FF6E /* PIParkingMeters.m in Sources */,
 				AC746BCA1D8DCF74000B9F68 /* AppDelegate.m in Sources */,
+				AC9D41211D90682D00904F36 /* PIMeterClusterController.m in Sources */,
 				ACBBD5F31D8EF9EB009185BB /* PIHomeViewViewController.m in Sources */,
 				AC9E2E811D8F9C2D00E9FF6E /* PIMeter.m in Sources */,
+				AC9D411E1D9066FD00904F36 /* PIMeterCluster.m in Sources */,
 				ACD5B3CB1D8F172A00ADEF60 /* PIConstants.m in Sources */,
 				ACBBD5EF1D8EF852009185BB /* PIRootViewControllerHandler.m in Sources */,
 				ACBBD5F81D8EFA1E009185BB /* PITutorialViewController.m in Sources */,
 				ACD5B3D11D8F27C100ADEF60 /* PILocationManager.m in Sources */,
+				AC9D41241D906D2700904F36 /* PIClusteredMeter.m in Sources */,
 				ACD5B3C71D8F08AC00ADEF60 /* PITutorialPageContentViewController.m in Sources */,
 				ACD5B3CE1D8F173F00ADEF60 /* PIHelper.m in Sources */,
 				AC746BC71D8DCF74000B9F68 /* main.m in Sources */,

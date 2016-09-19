@@ -6,8 +6,12 @@
 //  Copyright © 2016 PARKIt.Vancouver. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef void (^Alert)(void);
 
 @interface PIHelper : NSObject
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message controller:(UIViewController *)controller block:(Alert)block;
 
 @end

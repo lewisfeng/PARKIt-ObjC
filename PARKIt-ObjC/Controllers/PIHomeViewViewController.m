@@ -9,20 +9,22 @@
 #import "PIHomeViewViewController.h"
 #import "PILocationManager.h"
 #import "PIConstants.h"
+#import "PIHelper.h"
 #import "PIParkingMeters.h"
 #import "PIMeter.h"
+#import "PIMeterCluster.h"
 @import GoogleMaps;
 
 @interface PIHomeViewViewController () <GMSMapViewDelegate>
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, strong) NSTimer *getUserLocationTimer;
 @property (nonatomic, assign) NSInteger getUserLocationFailedCount;
-@property (nonatomic, copy) NSArray *allParkingMeters;
+@property (nonatomic, copy) NSArray <PIMeter *> *allParkingMeters;
 @end
 
 @implementation PIHomeViewViewController
 
-#define kGetUserLocationFailedMaxCount 10
+#define kGetUserLocationFailedMaxCount 5
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +36,23 @@
     [self setupMapView];
     
     self.allParkingMeters = [NSArray arrayWithArray:[PIParkingMeters parkingMeters]];
+
+    double lat = 49.300;
+    double lng = -122.782;
+    double num = 0.0001;
+    PIMeter *m0 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    PIMeter *m1 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    PIMeter *m2 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    PIMeter *m3 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    PIMeter *m4 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    PIMeter *m5 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    num = num + num;
+    self.allParkingMeters = [NSArray arrayWithObjects:m0, m1, m2, m3, m4, m5, nil];
 }
 
 - (void)setupMapView {
@@ -80,6 +99,27 @@
 
 - (void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
 
+    
+    [[PIMeterCluster sharedCluster] clusterMeters:self.allParkingMeters map:mapView];
+    
+}
+
+- (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView {
+    [PILocationManager requestWhenInUseAuthorizationCompletion:^(NSString *title, NSString *message) {
+        [self showAlertWithTitle:title message:message];
+    }];
+    return NO;
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"CLOSE" style:UIAlertActionStyleCancel handler:NULL]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Location Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:NULL];
+        }
+    }]];
+    [self presentViewController:alert animated:NULL completion:NULL];
 }
 
 @end
