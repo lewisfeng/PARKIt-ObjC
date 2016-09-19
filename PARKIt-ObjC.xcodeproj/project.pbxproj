@@ -14,6 +14,9 @@
 		AC746BD51D8DCF74000B9F68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC746BD31D8DCF74000B9F68 /* LaunchScreen.storyboard */; };
 		AC746BE01D8DCF74000B9F68 /* PARKIt_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC746BDF1D8DCF74000B9F68 /* PARKIt_ObjCTests.m */; };
 		AC746BEB1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC746BEA1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m */; };
+		AC9E2E811D8F9C2D00E9FF6E /* PIMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */; };
+		AC9E2E871D8F9CEF00E9FF6E /* PIParkingMeters.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */; };
+		AC9E2E891D8FA5B600E9FF6E /* VancouverParkingMeters.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */; };
 		ACBBD5EF1D8EF852009185BB /* PIRootViewControllerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBBD5EE1D8EF852009185BB /* PIRootViewControllerHandler.m */; };
 		ACBBD5F31D8EF9EB009185BB /* PIHomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBBD5F11D8EF9EB009185BB /* PIHomeViewViewController.m */; };
 		ACBBD5F41D8EF9EB009185BB /* PIHomeViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBBD5F21D8EF9EB009185BB /* PIHomeViewViewController.xib */; };
@@ -59,6 +62,11 @@
 		AC746BE61D8DCF74000B9F68 /* PARKIt-ObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PARKIt-ObjCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC746BEA1D8DCF74000B9F68 /* PARKIt_ObjCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PARKIt_ObjCUITests.m; sourceTree = "<group>"; };
 		AC746BEC1D8DCF74000B9F68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9E2E7F1D8F9C2D00E9FF6E /* PIMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIMeter.h; path = "PARKIt-ObjC/Models/PIMeter.h"; sourceTree = "<group>"; };
+		AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIMeter.m; path = "PARKIt-ObjC/Models/PIMeter.m"; sourceTree = "<group>"; };
+		AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIParkingMeters.h; path = "PARKIt-ObjC/Models/PIParkingMeters.h"; sourceTree = "<group>"; };
+		AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIParkingMeters.m; path = "PARKIt-ObjC/Models/PIParkingMeters.m"; sourceTree = "<group>"; };
+		AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = VancouverParkingMeters.plist; path = "PARKIt-ObjC/Models/VancouverParkingMeters.plist"; sourceTree = "<group>"; };
 		ACBBD5ED1D8EF852009185BB /* PIRootViewControllerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIRootViewControllerHandler.h; path = "PARKIt-ObjC/Controllers/PIRootViewControllerHandler.h"; sourceTree = "<group>"; };
 		ACBBD5EE1D8EF852009185BB /* PIRootViewControllerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIRootViewControllerHandler.m; path = "PARKIt-ObjC/Controllers/PIRootViewControllerHandler.m"; sourceTree = "<group>"; };
 		ACBBD5F01D8EF9EB009185BB /* PIHomeViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIHomeViewViewController.h; path = "PARKIt-ObjC/Controllers/PIHomeViewViewController.h"; sourceTree = "<group>"; };
@@ -214,6 +222,11 @@
 				ACD5B3CD1D8F173F00ADEF60 /* PIHelper.m */,
 				ACD5B3CF1D8F27C100ADEF60 /* PILocationManager.h */,
 				ACD5B3D01D8F27C100ADEF60 /* PILocationManager.m */,
+				AC9E2E7F1D8F9C2D00E9FF6E /* PIMeter.h */,
+				AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */,
+				AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */,
+				AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */,
+				AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */,
 			);
 			name = Models;
 			path = ..;
@@ -340,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC746BD51D8DCF74000B9F68 /* LaunchScreen.storyboard in Resources */,
+				AC9E2E891D8FA5B600E9FF6E /* VancouverParkingMeters.plist in Resources */,
 				ACBBD5F91D8EFA1E009185BB /* PITutorialViewController.xib in Resources */,
 				AC746BD21D8DCF74000B9F68 /* Assets.xcassets in Resources */,
 				ACD5B3C81D8F08AC00ADEF60 /* PITutorialPageContentViewController.xib in Resources */,
@@ -416,8 +430,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9E2E871D8F9CEF00E9FF6E /* PIParkingMeters.m in Sources */,
 				AC746BCA1D8DCF74000B9F68 /* AppDelegate.m in Sources */,
 				ACBBD5F31D8EF9EB009185BB /* PIHomeViewViewController.m in Sources */,
+				AC9E2E811D8F9C2D00E9FF6E /* PIMeter.m in Sources */,
 				ACD5B3CB1D8F172A00ADEF60 /* PIConstants.m in Sources */,
 				ACBBD5EF1D8EF852009185BB /* PIRootViewControllerHandler.m in Sources */,
 				ACBBD5F81D8EFA1E009185BB /* PITutorialViewController.m in Sources */,

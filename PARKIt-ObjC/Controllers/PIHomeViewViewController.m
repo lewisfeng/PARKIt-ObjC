@@ -9,12 +9,15 @@
 #import "PIHomeViewViewController.h"
 #import "PILocationManager.h"
 #import "PIConstants.h"
+#import "PIParkingMeters.h"
+#import "PIMeter.h"
 @import GoogleMaps;
 
 @interface PIHomeViewViewController () <GMSMapViewDelegate>
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, strong) NSTimer *getUserLocationTimer;
 @property (nonatomic, assign) NSInteger getUserLocationFailedCount;
+@property (nonatomic, copy) NSArray *allParkingMeters;
 @end
 
 @implementation PIHomeViewViewController
@@ -23,12 +26,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.title = @"PARK-It";
     // location manager
     [PILocationManager sharedLocationManager];
     // add map view
     [self setupMapView];
+    
+    self.allParkingMeters = [NSArray arrayWithArray:[PIParkingMeters parkingMeters]];
 }
 
 - (void)setupMapView {
@@ -66,6 +71,7 @@
     [UIView animateWithDuration:kAnimateDuration013f animations:^{
         self.mapView.alpha = 1.0f;
     } completion:^(BOOL finished) {
+        [self.getUserLocationTimer invalidate];
         self.mapView.userInteractionEnabled = YES;
     }];
 }
