@@ -15,5 +15,6 @@
 + (instancetype)sharedCluster;
 
 - (void)clusterMeters:(NSArray *)meters map:(GMSMapView *)mapView;
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker;
 
 @end

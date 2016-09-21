@@ -25,26 +25,20 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedCluster = [[PIMeterCluster alloc] init];
+        sharedCluster.lastMeters = [NSMutableArray array];
     });
     return sharedCluster;
 }
 
 - (void)clusterMeters:(NSArray *)meters map:(GMSMapView *)mapView {
-    
-    // if is an empity array, remove all markers from map view, remove all markers obj from last markers array
-//    if (!markers.count) {
-//        [mapView clear];
-//        [self.lastMeters removeAllObjects];
-//        return;
-//    }
-    
     // 0  remove out bounds markers -> we don't want to add meters that are not showing in the current map view
     NSMutableArray *reminingRegluarMeters = [self reminingRegluarMetersAfterRemoveOutOfBoundsMetersWithCurrentMeters:meters map:mapView];
-    NSLog(@"meter count - %lu", reminingRegluarMeters.count);
-    
-//    [self showMeters:reminingRegluarMeters onMap:mapView];
-//    return;
-    
+    // NSLog(@"meter count - %lu", reminingRegluarMeters.count);
+    if (![self needClusteringWithMap:mapView]) {
+        [self showMeters:reminingRegluarMeters onMap:mapView];
+        return;
+    }
+
     [self removeTooCloseMeters:reminingRegluarMeters onMap:mapView];
 }
 
@@ -70,7 +64,7 @@
     
     [toRemove removeAllObjects];
     
-    for (PIMeter *meter in self.lastMeters) {
+    for (PIClusteredMeter *meter in self.lastMeters) {
         if (![bounds containsCoordinate:meter.position]) {
             meter.map = nil;
             [toRemove addObject:meter];
@@ -80,6 +74,14 @@
     [self.lastMeters removeObjectsInArray:toRemove];
     
     return metersCopy;
+}
+
+- (BOOL)needClusteringWithMap:(GMSMapView *)mapView {
+    NSLog(@"Zoom - %.1f", mapView.camera.zoom);
+    if (mapView.camera.zoom > 17.7f) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)removeTooCloseMeters:(NSMutableArray *)reminingRegluarMeters onMap:(GMSMapView *)mapView {
@@ -120,7 +122,7 @@
             }
         }
     }
-    NSLog(@"toRemove - %lu", toRemove.count);
+    // NSLog(@"toRemove - %lu", toRemove.count);
     for (PIMeter *marker in toRemove) {
         marker.map = nil;
     }
@@ -172,14 +174,14 @@
     [self.lastMeters removeObjectsInArray:toRemove];
     [self.lastMeters addObjectsFromArray:thisMeters];
     
-    NSLog(@"clustered meter count - %lu\n ", self.lastMeters.count);
+    // NSLog(@"clustered meter count - %lu\n ", self.lastMeters.count);
     
     // show clustered meter on map
     for (PIClusteredMeter *meter in self.lastMeters) {
         meter.map = mapView;
-        NSLog(@"clustered meter contains - %lu", meter.containedMeters.count);
+        // NSLog(@"clustered meter contains - %lu", meter.containedMeters.count);
     }
-    NSLog(@"remining  meter count - %lu", reminingRegluarMeters.count);
+    // NSLog(@"remining  meter count - %lu", reminingRegluarMeters.count);
     // show regular meter on map
     for (PIMeter *meter in reminingRegluarMeters) {
         meter.map = mapView;
@@ -190,39 +192,26 @@
     for (PIMeter *meter in reminingRegluarMeters) {
         meter.map = mapView;
     }
+    for (PIClusteredMeter *meter in self.lastMeters) {
+        meter.map = nil;
+    }
 }
 
-//- (void)showMeters:OnMap:(GMSMapView *)mapView {
-//    
-//}
-
-
-//- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
-//    
-//    if ([[marker class] isSubclassOfClass:[PIMarkerCluster class]]) {
-//        
-//        GMSMutablePath *path = [GMSMutablePath path];
-//        
-//        PIMarkerCluster *clusteredMarker = (PIMarkerCluster *)marker;
-//        
-//        clusteredMarker.map = nil;
-//        
-//        [self.lastMeters removeObject:clusteredMarker];
-//        
-//        for (PIMeter *PIMeter in clusteredMarker.containsMeters) {
-//            
-//            [path addCoordinate:PIMeter.position];
-//        }
-//        
-//        GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
-//        
-//        [mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:100.0f]];
-//        
-//        return YES;
-//    }
-//    
-//    return NO;
-//}
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
+    if ([[marker class] isSubclassOfClass:[PIClusteredMeter class]]) {
+        GMSMutablePath *path = [GMSMutablePath path];
+        PIClusteredMeter *clusteredMeter = (PIClusteredMeter *)marker;
+        clusteredMeter.map = nil;
+        [self.lastMeters removeObject:clusteredMeter];
+        for (PIMeter *PIMeter in clusteredMeter.containedMeters) {
+            [path addCoordinate:PIMeter.position];
+        }
+        GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
+        [mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:100.0f]];
+        return YES;
+    }
+    return NO;
+}
 
 #pragma mark - minDistanceBetweenEachMarkerWithCurrentCameraZoom
 
@@ -283,6 +272,14 @@
         minDistance = 0.1f;
     }
     return minDistance;
+}
+
+- (BOOL)isThisMeter:(PIMeter *)this smaeLocationWithThatMeter:(GMSMarker *)that {
+    if (this.position.latitude  == that.position.latitude &&
+        this.position.longitude == that.position.longitude) {
+        return YES;
+    }
+    return NO;
 }
 
 @end
