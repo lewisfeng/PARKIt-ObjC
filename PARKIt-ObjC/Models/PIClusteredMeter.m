@@ -30,7 +30,7 @@
 }
 
 - (UIImage *)icon {
-    NSInteger number = self.containedMeters.count + 1;
+    NSInteger number = self.containedMeters.count;
     CGFloat markerIconWH = 30.0f;
     if (number > 10) {
         markerIconWH = 35.0f;

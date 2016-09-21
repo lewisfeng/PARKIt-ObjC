@@ -52,7 +52,9 @@
     num = num + num;
     PIMeter *m5 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
     num = num + num;
-    self.allParkingMeters = [NSArray arrayWithObjects:m0, m1, m2, m3, m4, m5, nil];
+    PIMeter *m6 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num*3, lng + num*3)];
+    num = num + num;
+    self.allParkingMeters = [NSArray arrayWithObjects:m0, m1, m2, m3, m4, m5, m6, nil];
 }
 
 - (void)setupMapView {
