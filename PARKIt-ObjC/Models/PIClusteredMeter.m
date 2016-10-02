@@ -29,6 +29,11 @@
     self.icon = [self icon];
 }
 
+- (void)setMap:(GMSMapView *)map {
+    [super setMap:map];
+    self.icon = [self icon];
+}
+
 - (UIImage *)icon {
     NSInteger number = self.containedMeters.count;
     CGFloat markerIconWH = 30.0f;

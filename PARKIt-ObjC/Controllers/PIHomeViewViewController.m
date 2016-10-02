@@ -47,14 +47,16 @@
     PIMeter *m2 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
     num = num + num;
     PIMeter *m3 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
+    PIMeter *m33 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num*1.01, lng + num*1.01)];
     num = num + num;
     PIMeter *m4 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
     num = num + num;
     PIMeter *m5 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num, lng + num)];
     num = num + num;
     PIMeter *m6 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num*3, lng + num*3)];
+    PIMeter *m7 = [PIMeter markerWithPosition:CLLocationCoordinate2DMake(lat + num*3.01, lng + num*3.01)];
     num = num + num;
-//    self.allParkingMeters = [NSArray arrayWithObjects:m0, m1, m2, m3, m4, m5, m6, nil];
+//    self.allParkingMeters = [NSArray arrayWithObjects:m0, m1, m2, m3, m4, m5, m6, m7, m33, nil];
 }
 
 - (void)setupMapView {

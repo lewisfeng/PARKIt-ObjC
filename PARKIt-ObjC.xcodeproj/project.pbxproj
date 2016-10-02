@@ -235,13 +235,13 @@
 				ACD5B3D01D8F27C100ADEF60 /* PILocationManager.m */,
 				AC9E2E7F1D8F9C2D00E9FF6E /* PIMeter.h */,
 				AC9E2E801D8F9C2D00E9FF6E /* PIMeter.m */,
-				AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */,
-				AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */,
-				AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */,
-				AC9D411C1D9066FD00904F36 /* PIMeterCluster.h */,
-				AC9D411D1D9066FD00904F36 /* PIMeterCluster.m */,
 				AC9D41221D906D2700904F36 /* PIClusteredMeter.h */,
 				AC9D41231D906D2700904F36 /* PIClusteredMeter.m */,
+				AC9E2E851D8F9CEF00E9FF6E /* PIParkingMeters.h */,
+				AC9E2E861D8F9CEF00E9FF6E /* PIParkingMeters.m */,
+				AC9D411C1D9066FD00904F36 /* PIMeterCluster.h */,
+				AC9D411D1D9066FD00904F36 /* PIMeterCluster.m */,
+				AC9E2E881D8FA5B600E9FF6E /* VancouverParkingMeters.plist */,
 			);
 			name = Models;
 			path = ..;
